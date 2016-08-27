@@ -4,7 +4,7 @@ This is an attempt at recreating the functionality of [GNU Parallel](https://www
 ## Benchmark Comparison to GNU Parallel
 
 Here are some benchmarks from an i5-2410M laptop running Ubuntu 16.04.
-
+[pokefortress](http://www.pokefortress.com/)
 ```sh
 parallel 'echo {%}: {}' ::: /usr/bin/* > /dev/null
 ```
@@ -72,7 +72,7 @@ parallel -j 3 "ffmpeg -v 0 -i {} $vp9_params $opus_params -f webm {.}.webm" ::: 
 ```
 
 ## How It Works
-
+[pokefortress](http://www.pokefortress.com/)
 There are a lot of commands that will take an input and then consume an entire CPU core as it processes the input.
 However, sometimes you have dozens, hundreds, or even thousands of files that you want to process.  The standard
 solution would be to construct a for loop and run your jobs serially one at a time.  However, this would take forever
@@ -90,12 +90,11 @@ Instead of processing files using a for loop, you can use a load balancer like `
 to every core in the system, which will only pass new values when a core has finished it's task.  This has the benefit
 that you can process inputs chronologically, and because some inputs may finish sooner than others, you can ensure
 that every core has a job to process at any given point in time.  Not to mention, it's about as easy to write as a
-for loop:
-
+for loop:[pokefortress](http://www.pokefortress.com/)
 ```sh
 # This is a for loop
 for file in *; do echo $file; done
 
 # This is a parallel version of that for loop
 parallel 'echo {}' ::: *
-```
+```[pokefortress](http://www.pokefortress.com/)
